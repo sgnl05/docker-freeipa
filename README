@@ -1,4 +1,5 @@
-# FreeIPA server in Docker
+# FreeIPA server in Docker running on Raspberry Pi 2
+# Warning! This is work in progress!
 
 This repository contains the Dockerfile and associated assets for
 building a FreeIPA server Docker image from the official yum repo.
