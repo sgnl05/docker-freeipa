@@ -1,5 +1,5 @@
-# Clone from the Fedora 23 image
-FROM fedora:23
+# Clone from the Fedora 23 image for ARM
+FROM armv7/armhf-fedora:23
 
 MAINTAINER Jan Pazdziora
 
