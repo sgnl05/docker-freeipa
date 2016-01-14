@@ -9,6 +9,8 @@ RUN dnf install -y freeipa-server freeipa-server-dns bind bind-dyndb-ldap perl '
 RUN dnf clean all
 ADD ticket-5269.patch /root/ticket-5269.patch
 RUN patch /usr/lib/python2.7/site-packages/ipaserver/install/cainstance.py < /root/ticket-5269.patch && python -c 'import ipaserver.install.cainstance'
+# Certificate service requires about 10 minutes to start on RPi.
+RUN sed -i "s/'startup_timeout', 300/'startup_timeout', 900/g" /usr/lib/python2.7/site-packages/ipalib/constants.py
 
 # Workaround https://fedorahosted.org/spin-kickstarts/ticket/60
 RUN [ -L /etc/systemd/system/syslog.service ] && ! [ -f /etc/systemd/system/syslog.service ] && rm -f /etc/systemd/system/syslog.service
