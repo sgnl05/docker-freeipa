@@ -5,7 +5,6 @@ MAINTAINER Jan Pazdziora
 
 # Install FreeIPA server
 RUN mkdir -p /run/lock 
-RUN dnf update -y
 RUN dnf install -y freeipa-server freeipa-server-dns bind bind-dyndb-ldap perl 'perl(bigint)' patch 
 RUN dnf clean all
 ADD ticket-5269.patch /root/ticket-5269.patch
