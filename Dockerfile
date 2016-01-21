@@ -5,8 +5,8 @@ MAINTAINER Jan Pazdziora
 
 # Install FreeIPA server
 RUN mkdir -p /run/lock 
-RUN dnf install -y freeipa-server freeipa-server-dns bind bind-dyndb-ldap pki-server perl 'perl(bigint)' patch
 RUN dnf update -y
+RUN dnf install -y freeipa-server freeipa-server-dns bind bind-dyndb-ldap pki-server perl 'perl(bigint)' patch
 RUN dnf clean all
 ADD ticket-5269.patch /root/ticket-5269.patch
 RUN patch /usr/lib/python2.7/site-packages/ipaserver/install/cainstance.py < /root/ticket-5269.patch && python -c 'import ipaserver.install.cainstance'
